@@ -1,9 +1,9 @@
-package sw;
+package sw.D2;
 
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class ex1961 {
+public class Solution1961 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int T = sc.nextInt();
