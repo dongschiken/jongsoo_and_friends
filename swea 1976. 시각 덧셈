@@ -1,0 +1,39 @@
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Solution {
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		for (int i = 1; i <= T; i++) {
+			int h1 = 0;
+			int h2 = 0;
+			int m1 = 0;
+			int m2 = 0;
+			int hCount = 0;
+			int mCount = 0;
+
+			h1 = sc.nextInt();
+			m1 = sc.nextInt();
+			h2 = sc.nextInt();
+			m2 = sc.nextInt();
+
+			hCount = h1 + h2;
+			mCount = m1 + m2;
+			if (mCount > 59) {
+				mCount -= 60;
+				hCount++;
+				
+			}
+			if(hCount>12) {
+				hCount-=12;
+			}
+
+			System.out.printf("#%d %d %d", i, hCount, mCount);
+			System.out.println();
+		}
+	}
+
+}
