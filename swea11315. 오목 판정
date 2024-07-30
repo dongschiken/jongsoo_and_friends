@@ -1,0 +1,96 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Solution {
+	public static void main(String[] args)  {
+		
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		sc.nextLine();
+
+		for (int i = 1; i <= T; i++) {
+			boolean found = false;
+			int size = sc.nextInt();
+			sc.nextLine();
+			char[][] arr = new char[size][size]; // 한글자씩 받기.
+
+			int count = 0;
+			for (int a = 0; a < size; a++) { // 배열 입력받기.
+				String inputLine = sc.nextLine(); // 한줄 우선받기
+				for (int b = 0; b < size; b++) {
+					arr[a][b] = inputLine.charAt(b); // 한줄 받은것 한글자씩 쪼개기
+					if (arr[a][b] == 'o') { // 가로줄 검사
+						count++;
+						if (count >= 5) {
+							found = true;
+							break;
+						}
+					} else
+						count = 0;
+				}
+				count = 0;
+			}
+
+			out: if (!found) { // 세로 비교하기.
+				for (int a = 0; a < size; a++) {
+					count = 0;
+					for (int b = 0; b < size; b++) {
+						if (arr[b][a] == 'o')
+							count++;
+						else {
+							count = 0;
+						}
+						if (count >= 5) {
+							found = true;
+							break out;
+						}
+					}
+				}
+				// 대각선 비교 모든 대각선 비교해야.
+				for (int a = 0; a <= size - 5; a++) {
+					for (int b = 0; b <= size - 5;b++) {
+						count = 0;
+						for (int j = 0; j < 5; j++) { // 왼쪽 위에서 오른쪽아래로(윗부분)
+							if (arr[j + a][j + b] == 'o') {
+								count++;
+							} else {
+								count = 0;
+							}
+							if (count >= 5) {
+								found = true;
+								break out;
+							}
+						}
+					}
+
+					for (int b = size - 1; b >=4; b--) {
+						count = 0;
+						for (int j = 0; j < 5; j++) { // 오른쪽에서 왼쪽 아래로 대각선
+							if (arr[a + j][b - j] == 'o') {
+								count++;
+							} else
+								count = 0;
+							if (count >= 5) {
+								found = true;
+								break out;
+							}
+
+						}
+					}
+
+				}
+			}
+			if (!found) {
+				System.out.printf("#%d NO", i);
+				System.out.println();
+			} else {
+				System.out.printf("#%d YES", i);
+				System.out.println();
+
+			}
+
+		}
+		sc.close();
+	}
+}
