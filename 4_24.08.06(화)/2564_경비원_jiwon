@@ -1,0 +1,77 @@
+import java.util.Scanner;
+
+public class Main {
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    
+    // 가로 및 세로 길이 입력
+    int R = sc.nextInt();
+    int C = sc.nextInt();
+    
+    // 입력 범위 검증
+    if (R < 1 || R > 100 || C < 1 || C > 100) {
+        System.out.println("가로 및 세로 길이는 1 이상 100 이하의 값을 입력해야 합니다.");
+        return; // 잘못된 입력일 경우 프로그램 종료
+    }
+    
+    int N = sc.nextInt(); // 상점의 개수
+    
+    // 입력 범위 검증
+    if (N < 1 || N > 100) {
+        System.out.println("상점의 개수는 1 이상 100 이하의 값을 입력해야 합니다.");
+        return; // 잘못된 입력일 경우 프로그램 종료
+    }
+    
+    int[] storeDistances = new int[N];
+    int totalPerimeter = 2 * (R + C);
+    
+    for (int i = 0; i < N; i++) {
+        int dir = sc.nextInt();
+        int dist = sc.nextInt();
+        
+        // 방향 및 거리 범위 검증
+        if (dir < 1 || dir > 4 || dist < 0 || dist > Math.max(R, C)) {
+            System.out.println("잘못된 방향 또는 거리 입력입니다.");
+            return; // 잘못된 입력일 경우 프로그램 종료
+        }
+        
+        storeDistances[i] = getDistance(dir, dist, R, C);
+        
+        // 거리 계산 실패 시 프로그램 종료
+        if (storeDistances[i] == -1) {
+            System.out.println("상점의 거리 계산에 실패했습니다.");
+            return;
+        }
+    }
+    
+    // 경비원의 위치 입력 및 거리 계산
+    int guardDir = sc.nextInt();
+    int guardDist = sc.nextInt();
+    
+    // 방향 및 거리 범위 검증
+    if (guardDir < 1 || guardDir > 4 || guardDist < 0 || guardDist > Math.max(R, C)) {
+        System.out.println("잘못된 경비원 방향 또는 거리 입력입니다.");
+        return; // 잘못된 입력일 경우 프로그램 종료
+    }
+    
+    int guardPosition = getDistance(guardDir, guardDist, R, C);
+    
+    // 거리 계산 실패 시 프로그램 종료
+    if (guardPosition == -1) {
+        System.out.println("경비원의 거리 계산에 실패했습니다.");
+        return;
+    }
+    
+    int totalDistance = 0;
+    
+    for (int storeDist : storeDistances) {
+        int clockwiseDistance = Math.abs(guardPosition - storeDist);
+        int counterClockwiseDistance = totalPerimeter - clockwiseDistance;
+        totalDistance += Math.min(clockwiseDistance, counterClockwiseDistance);
+    }
+    
+    System.out.println(totalDistance);
+    
+    sc.close();
+}
+}
