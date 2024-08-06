@@ -1,0 +1,23 @@
+package study_0806;
+
+import java.util.Scanner;
+
+public class Solution14692_통나무자르기 {
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+
+		for (int t = 1; t <= T; t++) {
+			long wood = sc.nextInt();
+			if (wood%2 == 0) {
+				System.out.println("#" + t + " " + "Alice");
+			} else {
+				System.out.println("#" + t + " " + "Bob");
+				
+			}
+			
+		}
+	}
+
+}
