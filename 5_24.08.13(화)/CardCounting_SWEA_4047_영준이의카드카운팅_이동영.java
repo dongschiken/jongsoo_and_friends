@@ -37,7 +37,9 @@ public class CardCounting_SWEA_4047_영준이의카드카운팅_이동영 {
 			int D = 0;
 			int H = 0;
 			int C = 0;
-			
+
+			// 현재 맵에 담겨있는 값을 기준으로 value에 -1이 찍혀있으면 동일한 값이 들어온거니까 ERROR를 출력
+			// S, D, H, C를 현재 키값에 있으면 ++
 			Set<Entry<String, Integer>> sm = map.entrySet();
 			Iterator<Entry<String, Integer>> ir = sm.iterator();
 			while (ir.hasNext()) {
