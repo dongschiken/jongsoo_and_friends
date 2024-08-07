@@ -38,7 +38,6 @@ public class no7078_문서제목붙이기 {
 			for(int i : set) {
 				reFirstAlphabet[index++] = i;
 			}
-//			System.out.println(set);
 			
 			// 65부터 시작해서 숫자 맞으면 count -> 중간에 안맞으면 count 멈추고 반환
 			int asciiNum = 65;
