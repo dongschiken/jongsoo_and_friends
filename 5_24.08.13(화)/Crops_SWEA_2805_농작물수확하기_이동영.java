@@ -11,9 +11,6 @@ public class Crops_SWEA_2805_농작물수확하기_이동영 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int T = Integer.parseInt(br.readLine());
-		// 5일때는 1 2 / 3 4 5
-		// half를 2로 둔다.
-		
 		for (int i = 0; i < T; i++) {
 			int N = Integer.parseInt(br.readLine());
 			int[][] crops = new int[N][N];
@@ -30,7 +27,9 @@ public class Crops_SWEA_2805_농작물수확하기_이동영 {
 			int left2 = 0;
 			int right2 = N;
 			int sum = 0;
-			
+
+			// 마름모 찍기 할때처럼 left와 rigth를 정해서 범위를 좁혀온다.
+			// 현재 위치에 들어있는 값을 sum에 더한다.
 			for (int j = 0; j < N; j++) {
 				if(j < N/2) {
 					for (int j2 = left; j2 <= right; j2++) {
