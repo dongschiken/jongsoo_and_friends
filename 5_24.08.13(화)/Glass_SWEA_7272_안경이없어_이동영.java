@@ -19,12 +19,14 @@ public class Glass_SWEA_7272_안경이없어_이동영 {
 			st = new StringTokenizer(br.readLine());
 			if(containsAB(st.nextToken(), st.nextToken())) bw.write("#"+i+" SAME\n");
 			else bw.write("#"+i+" DIFF\n");
-			
 		}
 		bw.flush();
 		bw.close();
 		br.close();
 	}
+	// str1과 str2를 각각 비교하면서 길이가 다르면 false를 리턴
+	// 길이가 같으면 str1의 길이만큼 반복하면서 현재 문자에 담긴 안경의 갯수를 1, 2, 3으로 나눠서 비교
+	// 두 값이 다르다면 false를 리턴
 	private static boolean containsAB(String str1, String str2) {
 		if(str1.length() != str2.length()) return false;
 		for (int i = 0; i < str1.length(); i++) {
