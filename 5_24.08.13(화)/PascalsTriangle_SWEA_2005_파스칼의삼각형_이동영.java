@@ -16,7 +16,13 @@ public class PascalsTriangle_SWEA_2005_파스칼의삼각형_이동영 {
 		for (int i = 1; i <= T; i++) {
 			int N = Integer.parseInt(br.readLine());
 			int[][] arr = new int[N][N+1];
-			
+
+			// 배열로 설명하면 5 * 5 배열
+			// 0 1 0 0 0 0 -> 0, 1번 좌표를 1로 바꿈
+			// 0 1 1 0 0 0 -> 상단의 0, 0 + 0, 1 / 0, 1 + 0, 2 위치를 현재좌표에 더한다. 
+			// 0 1 2 1 0 0 -> 상단의 0, 0 + 0, 1/ 0, 1 + 0, 2 / 0, 2 + 0, 3 위치를 현재좌표에 더한다.
+			// 0 1 3 3 1 0 -> ...
+			// 0 1 4 6 4 1 -> 최종적으로 마지막 좌표까지 오면 숫자가 다 찍힌다.
 			arr[0][1] = 1;
 			for (int j = 1; j < arr.length; j++) {
 				for (int j2 = 1; j2 < arr[j].length; j2++) {
