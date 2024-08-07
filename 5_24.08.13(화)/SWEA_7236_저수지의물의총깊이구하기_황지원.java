@@ -34,7 +34,7 @@ public class no7236_저수지의물의총깊이구하기 {
 							++sum;
 						}
 					}
-          				// sum이 0일경우는 1로 변환 필요
+          				// sum이 0일경우는 1로 변환 필요함
 					if (sum == 0)
 						sum = 1;
 					maxSum = Math.max(maxSum, sum);
